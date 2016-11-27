@@ -1,0 +1,33 @@
+{
+	"users": [{
+		"id": "001",
+		"fName": "Hege",
+		"lName": "Pege",
+		"password": "123456"
+	}, {
+		"id": "002",
+		"fName": "Kim",
+		"lName": "Pim",
+		"password": "123456"
+	}, {
+		"id": "003",
+		"fName": "Sal",
+		"lName": "Smith",
+		"password": "123456"
+	}, {
+		"id": "004",
+		"fName": "Jack",
+		"lName": "Jones",
+		"password": "123456"
+	}, {
+		"id": "005",
+		"fName": "John",
+		"lName": "Doe",
+		"password": "123456"
+	}, {
+		"id": "006",
+		"fName": "Peter",
+		"lName": "Pan",
+		"password": "123456"
+	}]
+}

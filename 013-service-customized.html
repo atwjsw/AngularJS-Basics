@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="myApp" ng-controller="myCtrl">
+
+<h4>一、在控制器中使用自定义服务，用于转换16进制数：</h4>
+<p>255 的16进制是:</p>
+<h4>{{hex}}</h4>
+<hr>
+<h4>二、在过滤器中使用自定义服务，用于转换16进制数：</h4>
+在过滤器中使用服务256:
+<h4>{{256 | myFormat}}</h4>
+<hr>
+<h4>三、过滤器使用服务数组 [255, 251, 200] 值转换为16进制。</h4>
+<ul>
+  <li ng-repeat="x in counts">{{x | myFormat}}</li>
+</ul>
+
+</div>
+
+
+<script>
+var app = angular.module('myApp', []);
+
+//定义服务
+app.service('hexafy', function() {
+	this.myFunc = function (x) {
+        return x.toString(16);
+    }
+});
+
+//在控制器中使用服务
+app.controller('myCtrl', function($scope, hexafy) {
+  $scope.hex = hexafy.myFunc(255);
+  $scope.counts = [255, 251, 200];
+});
+
+//在过滤器中使用服务
+app.filter('myFormat',['hexafy', function(hexafy) {
+    return function(x) {
+        return hexafy.myFunc(x);
+    };
+}]);
+</script>
+
+</body>
+</html>
+<!-- 
+- 你可以创建访问自定义服务，链接到你的模块中：
+- 创建名为hexafy 的服务
+- 要使用访问自定义服务，需要在定义控制器的时候独立添加 -->

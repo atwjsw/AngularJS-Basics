@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <style>
+    input.ng-invalid {
+        background-color: lightblue;
+    }    
+    </style>
+</head>
+
+<body>
+    <h4>在输入框中输入你的邮箱地址，如果不是一个合法的邮箱地址，会弹出提示信息。</h4>
+    <h4>不同状态背景颜色会发送变化</h4>	
+    <form ng-app="" name="myForm" ng-init="myText = 'test@runoob.com'">
+        Email:
+        <input type="email" name="myAddress" ng-model="myText" required>
+        </p>
+        <span ng-show="myForm.myAddress.$error.email">不是一个合法的邮箱地址</span>
+        <h5>状态:</h5> {{myForm.myAddress.$valid}} {{myForm.myAddress.$dirty}} {{myForm.myAddress.$touched}}
+    </form>
+</body>
+
+</html>
+<!-- 
+1. 以上实例中，提示信息会在 ng-show 属性返回 true 的情况下显示。 
+2. ng-model 指令可以为应用数据提供状态值(invalid, dirty, touched, error):
+3. 编辑文本域，不同状态背景颜色会发送变化。email域添加了 required 属性，该值是必须的而且需为email格式，否则是不合法的。
+-->

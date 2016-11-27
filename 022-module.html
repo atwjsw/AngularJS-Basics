@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script> 
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+{{ firstName + " " + lastName }}
+<hr>
+	<runoob-directive></runoob-directive>	
+
+</div>
+
+<script>
+//1.通过angular.module 函数来创建模块；
+//2."myApp" 参数对应执行应用的 HTML 元素。
+//3. 在模块定义中 [] 参数用于定义模块的依赖关系。中括号[]表示该模块没有依赖，如果有依赖的话会在中括号写上依赖的模块名字。
+var app = angular.module("myApp", []);
+
+//4. 使用angular.controller函数来创建控制器
+//5. 使用 ng-controller 指令来添加应用的控制器
+app.controller("myCtrl", function($scope) {
+    $scope.firstName = "John";
+    $scope.lastName = "Doe";
+});
+
+//6. 在模块中添加的指令
+app.directive("runoobDirective", function() {
+    return {
+        template : "我在指令构造器中创建!"
+    };
+});
+</script>
+
+</body>
+</html>

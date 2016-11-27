@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+
+<body>
+    <div ng-app="" ng-init="firstName='John';quantity=1;price=5;names=['Jani','Hege','Kai'];
+    country_names=[ {name:'Jani',country:'Norway'},
+            {name:'Hege',country:'Sweden'},
+            {name:'Kai',country:'Denmark'}]">
+        <h4>一、单个数据绑定</h4>
+        <p>在输入框中尝试输入：</p>
+        <p>姓名：
+            <input type="text" ng-model="firstName">
+        </p>
+        <p>你输入的为： {{ firstName }}</p>
+        <h4>二、多个数据绑定</h4>
+        <h5>价格计算器</h5> 数量：
+        <input type="number" ng-model="quantity"> 价格：
+        <input type="number" ng-model="price">
+        <p><b>总价：</b> {{ quantity * price }}</p>
+        <h4>三、使用 ng-repeat 来循环数组</h4>
+        <ul>
+            <li ng-repeat="x in names">
+                {{ x }}
+            </li>
+        </ul>
+        <p>四、使用 ng-repeat 来循环对象数组：</p>
+        <ul>
+            <li ng-repeat="x in country_names">
+                {{ x.name + ', ' + x.country }}
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
+<!-- 
+1. ng-app 指令告诉 AngularJS，<div> 元素是 AngularJS 应用程序 的"所有者"。一个网页可以包含多个运行在不同元素中的 AngularJS 应用程序。
+2. 上面实例中的 {{ firstName }} 表达式是一个 AngularJS 数据绑定表达式。AngularJS 中的数据绑定，同步了 AngularJS 表达式与 AngularJS 数据。{{ firstName }} 是通过 ng-model="firstName" 进行同步。 
+3. AngularJS 完美支持数据库的 CRUD（增加Create、读取Read、更新Update、删除Delete）应用程序。
+把实例中的对象想象成数据库中的记录。-->

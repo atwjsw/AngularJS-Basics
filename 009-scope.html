@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+<h4>1. 控制器中创建一个属性名 "carname"，对应了视图中使用 {{ }} 中的名称。</h4>
+<h1>{{carname}}</h1>
+
+<h4>2. 当你修改输入框中的值时，会影响到模型(model),当然也会影响到控制器对应的属性值。</h4>
+<input ng-model="name">
+<h1>我的名字是 {{name}}</h1>
+
+<h4>3. 当我们使用 ng-repeat 指令时，每个重复项都访问了当前的数组对象。</h4>
+<ul>
+    <li ng-repeat="x in names">{{x}}</li>
+</ul>
+
+<h4>4. 创建控制器时，将 $rootScope 作为参数传递，注意 $rootScope 在循环对象内外都可以访问。（未体现跨应用）。</h4>
+<h1>{{lastname}} 家族成员:</h1>
+<ul>
+    <li ng-repeat="x in names">{{x}} {{lastname}}</li>
+</ul>
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $rootScope) {
+    $scope.carname = "Volvo";
+    $scope.name = "John Dow";
+    $scope.names = ["Emil", "Tobias", "Linus"];
+    $rootScope.lastname = "Refsnes";
+});
+</script>
+
+</body>
+</html>

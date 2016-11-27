@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+
+<body>
+    <div ng-app="myApp">
+        <h4>一、大小写转换</h4>
+        <div ng-controller="personCtrl">
+            <p>名为 {{ firstName | uppercase }}</p>
+            <p>姓为 {{ lastName | lowercase }}</p>
+        </div>
+        <hr>
+        <h4>二、货币格式转换</h4>
+        <div ng-controller="costCtrl">
+            数量:
+            <input type="number" ng-model="quantity"> 价格:
+            <input type="number" ng-model="price">
+            <p>总价 = {{ (quantity * price) | currency }}</p>
+        </div>
+        
+        <div ng-controller="namesCtrl">
+        	<hr>
+        	<h4>三、向指令添加过滤器,orderBy 过滤器根据表达式排列数组:</h4>
+            <ul>
+                <li ng-repeat="x in names | orderBy:'country'">
+                    {{ x.name + ', ' + x.country }}
+                </li>
+            </ul>
+            <hr>
+            <h4>四、过滤输入，filter 过滤器从数组中选择一个子集:</h4>
+            <p>输入过滤:</p>
+            <p>
+                <input type="text" ng-model="test">
+            </p>
+            <ul>
+                <li ng-repeat="x in names | filter:test | orderBy:'country'">
+                    {{ (x.name | uppercase) + ', ' + x.country }}
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+var app = angular.module('myApp', []);
+app.controller('personCtrl', function($scope) {
+    $scope.firstName = "John";
+    $scope.lastName = "Doe";
+    $scope.fullName = function() {
+        return $scope.firstName + " " + $scope.lastName;
+    };
+});
+app.controller('costCtrl', function($scope) {
+    $scope.quantity = 1;
+    $scope.price = 9.99;
+});
+app.controller('namesCtrl', function($scope) {
+    $scope.names = [{
+        name: 'Jani',
+        country: 'Norway'
+    }, {
+        name: 'Hege',
+        country: 'Sweden'
+    }, {
+        name: 'Kai',
+        country: 'Denmark'
+    }];
+});
+</script>
+</body>
+
+</html>
